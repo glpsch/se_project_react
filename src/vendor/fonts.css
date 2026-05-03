@@ -1,4 +1,9 @@
-  
+@font-face {
+    font-family: 'Cabinet Grotesk Bold';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Cabinet Grotesk Bold'), url('./fonts/cabinet-grotesk/CabinetGrotesk-Bold.woff') format('woff');
+    }
   
   @font-face {
     font-family: 'Cabinet Grotesk Regular';

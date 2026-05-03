@@ -7,17 +7,17 @@ import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 
 function App() {
- // const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
-    <>
-
-      <Header />
-      <Main />
-      <Footer />
-    
-    </>
-  )
+    <div className="page">
+      <div className="page__content">
+        <Header />
+        <Main />
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
 export default App
