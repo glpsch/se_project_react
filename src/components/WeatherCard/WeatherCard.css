@@ -1,0 +1,41 @@
+@import "../../vendor/fonts.css";
+/* .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 8px;
+  background-color: #f3f3f3;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  font-weight: 700;
+} */
+
+.weather-card {
+  position: relative;
+  display: flex;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.weather-card__temp {
+  font-family: "Cabinet Grotesk Bold";
+  font-weight: 700;
+  color: #fff;
+  font-size: 37px;
+  line-height: 40px;
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  left: 16px;
+ 
+  letter-spacing: 0;
+
+
+}
+
+.weather-card__image {
+    width: 100%;
+    object-fit: cover;
+    object-position: right top;
+}

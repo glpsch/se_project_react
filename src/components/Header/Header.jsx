@@ -3,11 +3,16 @@ import avatar from "../../images/av.jpg";
 import logo from "../../images/logo.svg";
 
 function Header() {
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <header className="header">
       <div className="header__container">
         <img src={logo} alt="logo" className="header__logo" />
-        <p className="header__info">Date, location</p>
+        <p className="header__info">{currentDate}, location</p>
       </div>
       <div className="header__container">
         <button className="header__button">+ Add clothes</button>
