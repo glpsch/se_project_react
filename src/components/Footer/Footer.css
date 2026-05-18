@@ -1,0 +1,11 @@
+@import "../../vendor/fonts.css";
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #f3f3f3;
+    font-family: "Cabinet Grotesk Bold";
+    font-size: 20px;
+    font-weight: 700;
+}

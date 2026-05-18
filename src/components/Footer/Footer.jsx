@@ -4,11 +4,12 @@ function Footer() {
   
 
     return (
-      <div className="footer">
-     
+      <section className="footer">
+     <p>Developed by Galina Psch</p>
+     <p>2026</p>
     
    
-      </div>
+      </section>
     )
   }
   
