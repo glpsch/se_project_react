@@ -4,6 +4,8 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import ItemModal from "../ItemModal/ItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 import { getWeather, getWeatherType } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
@@ -12,6 +14,8 @@ import { defaultClothingItems } from "../../utils/defaultClothingItems";
 function App() {
   const [clothingItems] = useState(defaultClothingItems);
   const [weatherData, setWeatherData] = useState(null);
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
 
   useEffect(() => {
     getWeather(
@@ -19,6 +23,7 @@ function App() {
       apiKey
     )
       .then((data) => {
+        console.log(data);
         setWeatherData(data);
       })
       .catch((err) => {
@@ -36,12 +41,43 @@ function App() {
       )
     : [];
 
+  const handleAddClick = () => {
+    setActiveModal("add-garment");
+  };
+
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+    setActiveModal("preview");
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+
+  const handleAddItemSubmit = (evt) => {
+    evt.preventDefault();
+  };
+
   return (
     <div className="page">
       <div className="page__content">
-        <Header />
-        <Main weatherData={weatherData} clothingItems={filteredClothingItems} />
+        <Header onAddClick={handleAddClick} />
+        <Main
+          weatherData={weatherData}
+          clothingItems={filteredClothingItems}
+          onCardClick={handleCardClick}
+        />
         <Footer />
+        <ItemModal
+          card={selectedCard}
+          isOpen={activeModal === "preview"}
+          onClose={handleCloseModal}
+        />
+        <AddItemModal
+          isOpen={activeModal === "add-garment"}
+          onClose={handleCloseModal}
+          onSubmit={handleAddItemSubmit}
+        />
       </div>
     </div>
   );

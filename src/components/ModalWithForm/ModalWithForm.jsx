@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import "../ItemModal/ItemModal.css";
 
 function ModalWithForm({
   title,
+  name,
   buttonText,
   isOpen,
   onClose,
@@ -34,7 +36,7 @@ function ModalWithForm({
 
   return (
     <div
-      className={`modal ${isOpen ? "modal_opened" : ""}`}
+      className={`modal modal_type_${name} ${isOpen ? "modal_is-opened" : ""}`}
       onClick={handleOverlayClick}
     >
       <div className="modal__container">
@@ -45,7 +47,7 @@ function ModalWithForm({
           onClick={onClose}
         />
         <h2 className="modal__title">{title}</h2>
-        <form className="modal__form" onSubmit={onSubmit}>
+        <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}

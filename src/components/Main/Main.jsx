@@ -2,7 +2,7 @@ import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard.jsx";
 import ItemCard from "../ItemCard/ItemCard.jsx";
 
-function Main({ weatherData, clothingItems }) {
+function Main({ weatherData, clothingItems, onCardClick }) {
   const temperature = weatherData ? Math.round(weatherData.main.temp) : null;
 
   return (
@@ -16,7 +16,7 @@ function Main({ weatherData, clothingItems }) {
         </p>
         <ul className="cards__list">
           {clothingItems.map((item) => (
-            <ItemCard key={item._id} item={item} />
+            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>
