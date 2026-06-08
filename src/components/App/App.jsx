@@ -61,7 +61,7 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header onAddClick={handleAddClick} />
+        <Header onAddClick={handleAddClick} weatherData={weatherData} />
         <Main
           weatherData={weatherData}
           clothingItems={filteredClothingItems}
