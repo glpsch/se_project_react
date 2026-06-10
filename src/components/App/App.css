@@ -1,4 +1,4 @@
-  .page {
+.page {
   width: 100%;
   background-color: #f3f3f3;
 }
@@ -14,5 +14,3 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 } */
-
-

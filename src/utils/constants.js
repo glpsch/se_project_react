@@ -1,5 +1,5 @@
 export const coordinates = {
-  latitude: 32.817280,
+  latitude: 32.81728,
   longitude: 34.988762,
 };
 

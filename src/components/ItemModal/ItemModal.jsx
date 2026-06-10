@@ -36,12 +36,7 @@ function ItemModal({ card, isOpen, onClose }) {
       onClick={handleOverlayClick}
     >
       <div className="modal__container modal__container_type_image">
-        <button
-          type="button"
-          className="modal__close"
-          
-          onClick={onClose}
-        />
+        <button type="button" className="modal__close" onClick={onClose} />
         <img src={cardImage} alt={cardName} className="modal__image" />
         <div className="modal__footer">
           <h2 className="modal__caption">{cardName}</h2>
@@ -52,4 +47,4 @@ function ItemModal({ card, isOpen, onClose }) {
   );
 }
 
-export default ItemModal;   
+export default ItemModal;

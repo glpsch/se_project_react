@@ -13,6 +13,7 @@ The idea of the application is pretty simple - we make a call to an API, which t
 The project is currently in development
 
 ## Current version specifics:
+
 ### Features
 
 - Fetches current weather data and location information from the OpenWeather API.
@@ -38,8 +39,11 @@ The project is currently in development
 
 ### Future Improvements
 
+- Responsive design
+- Varied visuals for different weather conditions
 - Add and delete clothing items
 - Like/favorite items
 - User authentication
 - Celsius/Fahrenheit unit switching
 - Backend integration for persistent data storage
+

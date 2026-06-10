@@ -7,7 +7,7 @@ function Main({ weatherData, clothingItems, onCardClick }) {
 
   return (
     <main>
-      <WeatherCard />
+      <WeatherCard temperature={temperature} />
       <section className="cards">
         <p className="cards__text">
           {temperature !== null

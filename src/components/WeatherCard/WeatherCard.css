@@ -28,14 +28,12 @@
   position: absolute;
   top: 20px;
   left: 16px;
- 
+
   letter-spacing: 0;
-
-
 }
 
 .weather-card__image {
-    width: 100%;
-    object-fit: cover;
-    object-position: right top;
+  width: 100%;
+  object-fit: cover;
+  object-position: right top;
 }

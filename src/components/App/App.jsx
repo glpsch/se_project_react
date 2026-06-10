@@ -36,9 +36,7 @@ function App() {
     : null;
 
   const filteredClothingItems = weatherType
-    ? clothingItems.filter(
-        (item) => item.weather.toLowerCase() === weatherType
-      )
+    ? clothingItems.filter((item) => item.weather.toLowerCase() === weatherType)
     : [];
 
   const handleAddClick = () => {
