@@ -7,7 +7,12 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
-import { getWeather, getWeatherType } from "../../utils/weatherApi";
+import {
+  getWeather,
+  getWeatherType,
+  getWeatherCondition,
+  isDaytime,
+} from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/defaultClothingItems";
 
@@ -36,6 +41,12 @@ function App() {
   const weatherType = weatherData
     ? getWeatherType(weatherData.main.temp)
     : null;
+
+  const weatherCondition = weatherData
+    ? getWeatherCondition(weatherData)
+    : null;
+
+  const isDay = weatherData ? isDaytime(weatherData) : true;
 
   const filteredClothingItems = weatherType
     ? clothingItems.filter((item) => item.weather.toLowerCase() === weatherType)
@@ -67,6 +78,8 @@ function App() {
           clothingItems={filteredClothingItems}
           onCardClick={handleCardClick}
           weatherError={weatherError}
+          weatherCondition={weatherCondition}
+          isDay={isDay}
         />
         <Footer />
         <ItemModal

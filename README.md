@@ -17,7 +17,7 @@ The project is currently in development
 ### Features
 
 - Fetches current weather data and location information from the OpenWeather API.
-- Displays the current temperature and weather conditions.
+- Displays the current temperature and weather conditions (both in numbers and visuals).
 - Filters clothing recommendations based on the current weather (`hot`, `warm`, or `cold`).
 - Renders clothing items dynamically.
 - Includes a reusable modal system for:
@@ -40,7 +40,6 @@ The project is currently in development
 ### Future Improvements
 
 - Responsive design
-- Varied visuals for different weather conditions
 - Add and delete clothing items
 - Like/favorite items
 - User authentication
