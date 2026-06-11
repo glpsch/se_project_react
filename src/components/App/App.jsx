@@ -16,6 +16,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [weatherError, setWeatherError] = useState("");
 
   useEffect(() => {
     getWeather(
@@ -23,11 +24,12 @@ function App() {
       apiKey
     )
       .then((data) => {
-        console.log(data);
         setWeatherData(data);
+        setWeatherError("");
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
+        setWeatherError("Couldn't load the weather. Please try again later.");
       });
   }, []);
 
@@ -64,6 +66,7 @@ function App() {
           weatherData={weatherData}
           clothingItems={filteredClothingItems}
           onCardClick={handleCardClick}
+          weatherError={weatherError}
         />
         <Footer />
         <ItemModal

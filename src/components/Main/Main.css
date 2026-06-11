@@ -2,6 +2,14 @@
   margin-top: 40px;
   width: 100%;
 }
+.cards__error {
+  margin: 0 0 16px;
+  font-family: "Cabinet Grotesk Bold";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #d12f2f;
+}
 .cards__text {
   font-family: "Cabinet Grotesk Bold";
   font-weight: 700;
@@ -12,6 +20,7 @@
 .cards__list {
   padding: 0;
   margin-top: 34px;
+  list-style: none;
 
   display: flex;
   flex-wrap: wrap;

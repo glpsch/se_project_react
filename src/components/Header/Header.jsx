@@ -12,7 +12,11 @@ function Header({ onAddClick, weatherData }) {
   return (
     <header className="header">
       <div className="header__container">
-        <img src={logo} alt="logo" className="header__logo" />
+        <img
+          src={logo}
+          alt="WTWR (What to Wear?) logo"
+          className="header__logo"
+        />
         <p className="header__info">
           {currentDate}, {location}
         </p>

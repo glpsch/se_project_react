@@ -2,7 +2,7 @@ import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick }) {
   return (
-    <div className="itemcard">
+    <li className="itemcard">
       <img
         src={item.link}
         alt={item.name}
@@ -10,7 +10,7 @@ function ItemCard({ item, onCardClick }) {
         onClick={() => onCardClick?.(item)}
       />
       <h2 className="itemcard__title">{item.name}</h2>
-    </div>
+    </li>
   );
 }
 
