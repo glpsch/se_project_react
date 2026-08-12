@@ -1,33 +1,28 @@
+import { useContext } from "react";
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard.jsx";
 import ItemCard from "../ItemCard/ItemCard.jsx";
+import TemperatureUnitContext from "../../contexts/TemperatureUnitContext";
 
-function Main({
-  weatherData,
-  clothingItems,
-  onCardClick,
-  weatherError,
-  weatherCondition,
-  isDay,
-}) {
-  const temperature = weatherData ? Math.round(weatherData.main.temp) : null;
+function Main({ weatherData, clothingItems, onCardClick, weatherError }) {
+  const { currentTemperatureUnit } = useContext(TemperatureUnitContext);
+
+  const temperature = weatherData
+    ? Math.round(weatherData.temperature[currentTemperatureUnit])
+    : null;
 
   return (
     <main>
       <WeatherCard
         temperature={temperature}
-        condition={weatherCondition}
-        isDay={isDay}
+        condition={weatherData?.condition}
+        isDay={weatherData?.isDay}
       />
       <section className="cards">
-        {weatherError && (
-          <p className="cards__error">
-            {weatherError}
-          </p>
-        )}
+        {weatherError && <p className="cards__error">{weatherError}</p>}
         <p className="cards__text">
           {temperature !== null
-            ? `Today is ${temperature}° F / You may want to wear: `
+            ? `Today is ${temperature}° ${currentTemperatureUnit} / You may want to wear: `
             : weatherError
             ? "Weather unavailable."
             : "Loading weather..."}

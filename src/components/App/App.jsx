@@ -6,13 +6,8 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
-
-import {
-  getWeather,
-  getWeatherType,
-  getWeatherCondition,
-  isDaytime,
-} from "../../utils/weatherApi";
+import TemperatureUnitContext from "../../contexts/TemperatureUnitContext";
+import { getWeather } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
 import { defaultClothingItems } from "../../utils/defaultClothingItems";
 
@@ -22,6 +17,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherError, setWeatherError] = useState("");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   useEffect(() => {
     getWeather(
@@ -38,18 +34,14 @@ function App() {
       });
   }, []);
 
-  const weatherType = weatherData
-    ? getWeatherType(weatherData.main.temp)
-    : null;
+  const handleToggleSwitchChange = () => {
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+  };
 
-  const weatherCondition = weatherData
-    ? getWeatherCondition(weatherData)
-    : null;
-
-  const isDay = weatherData ? isDaytime(weatherData) : true;
-
-  const filteredClothingItems = weatherType
-    ? clothingItems.filter((item) => item.weather.toLowerCase() === weatherType)
+  const filteredClothingItems = weatherData
+    ? clothingItems.filter(
+        (item) => item.weather.toLowerCase() === weatherData.type
+      )
     : [];
 
   const handleAddClick = () => {
@@ -72,26 +64,28 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header onAddClick={handleAddClick} weatherData={weatherData} />
-        <Main
-          weatherData={weatherData}
-          clothingItems={filteredClothingItems}
-          onCardClick={handleCardClick}
-          weatherError={weatherError}
-          weatherCondition={weatherCondition}
-          isDay={isDay}
-        />
-        <Footer />
-        <ItemModal
-          card={selectedCard}
-          isOpen={activeModal === "preview"}
-          onClose={handleCloseModal}
-        />
-        <AddItemModal
-          isOpen={activeModal === "add-garment"}
-          onClose={handleCloseModal}
-          onSubmit={handleAddItemSubmit}
-        />
+        <TemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <Header onAddClick={handleAddClick} weatherData={weatherData} />
+          <Main
+            weatherData={weatherData}
+            clothingItems={filteredClothingItems}
+            onCardClick={handleCardClick}
+            weatherError={weatherError}
+          />
+          <Footer />
+          <ItemModal
+            card={selectedCard}
+            isOpen={activeModal === "preview"}
+            onClose={handleCloseModal}
+          />
+          <AddItemModal
+            isOpen={activeModal === "add-garment"}
+            onClose={handleCloseModal}
+            onSubmit={handleAddItemSubmit}
+          />
+        </TemperatureUnitContext.Provider>
       </div>
     </div>
   );

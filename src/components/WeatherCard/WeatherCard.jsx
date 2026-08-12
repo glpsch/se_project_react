@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import "./WeatherCard.css";
+import TemperatureUnitContext from "../../contexts/TemperatureUnitContext";
 
 import clearDay from "../../images/weather/clear_day.svg";
 import clearNight from "../../images/weather/clear_n.svg";
@@ -23,6 +25,7 @@ const weatherImages = {
 };
 
 function WeatherCard({ temperature, condition = "clear", isDay = true }) {
+  const { currentTemperatureUnit } = useContext(TemperatureUnitContext);
   const timeOfDay = isDay ? "day" : "night";
   const image =
     weatherImages[condition]?.[timeOfDay] ?? weatherImages.clear.day;
@@ -31,7 +34,9 @@ function WeatherCard({ temperature, condition = "clear", isDay = true }) {
   return (
     <section className="weather-card">
       <p className="weather-card__temp">
-        {temperature !== null ? `${temperature}°F` : "Loading weather..."}
+        {temperature !== null
+          ? `${temperature}°${currentTemperatureUnit}`
+          : "Loading weather..."}
       </p>
       <img src={image} alt={altText} className="weather-card__image" />
     </section>

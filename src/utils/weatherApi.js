@@ -36,10 +36,22 @@ export function isDaytime(weatherData) {
 export const getWeather = ({ latitude, longitude }, apiKey) =>
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return Promise.reject(`Error: ${res.status}`);
+      }
+    })
+    .then((data) => {
+      const weather = {};
+      weather.city = data.name;
+      weather.temperature = {};
+      weather.temperature.F = data.main.temp;
+      weather.temperature.C = Math.round((data.main.temp - 32) * 5 / 9);
+      weather.type = getWeatherType(data.main.temp);
+      weather.condition = getWeatherCondition(data);
+      weather.isDay = isDaytime(data);
+      return weather;
+    });
