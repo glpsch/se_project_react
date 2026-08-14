@@ -22,7 +22,7 @@ function Main({ weatherData, clothingItems, onCardClick, weatherError }) {
         {weatherError && <p className="cards__error">{weatherError}</p>}
         <p className="cards__text">
           {temperature !== null
-            ? `Today is ${temperature}° ${currentTemperatureUnit} / You may want to wear: `
+            ? `Today is ${temperature}°${currentTemperatureUnit} / You may want to wear: `
             : weatherError
             ? "Weather unavailable."
             : "Loading weather..."}

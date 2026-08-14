@@ -1,16 +1,72 @@
-.header__toggle-temperature-unit {
-    margin-right: 20px;
-  background-color: transparent;
-  border: 2px solid #7E7E7E;
-  border-radius: 16px;
-  font-family: "Cabinet Grotesk Bold";
-  font-size: 14px;
-  font-weight: 700;
-  color: #7E7E7E;
+.header__toggle-checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
 }
 
-.header__toggle-temperature-unit:hover {
-    border: 2px solid #000;
-    cursor: pointer;
-    color: #000;
+.header__toggle-label {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 56px;
+  height: 28px;
+  background: #fff;
+  position: relative;
+  transition: background-color 0.2s;
+  border: 2px solid #7e7e7e;
+  border-radius: 16px;
+  transition: border-color 0.4s;
+}
+
+.header__toggle-label:hover {
+  border-color: #000;
+}
+
+.header__toggle-label:hover .header__toggle-letter:not(.header__toggle-letter_active) {
+  color: #000;
+}
+
+.header__toggle-label .header__toggle-button {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 16px;
+  transition: 0.2s;
+  background: #000;
+  /* box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29); */
+
+  left: 0px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.header__toggle-checkbox:checked + .header__toggle-label .header__toggle-button {
+  right: 0px;
+  transform: translateX(28px);
+}
+
+/* .header__toggle-label:active .header__toggle-button {
+    width: 56px;
+  } */
+
+.header__toggle-letter {
+  position: absolute;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 700;
+  color: #7e7e7e;
+  transition: color 0.4s ease-in-out;
+}
+
+.header__toggle-letter:first-of-type {
+  left: 10px;
+}
+.header__toggle-letter:nth-of-type(2) {
+  right: 8px;
+}
+.header__toggle-letter_active {
+  color: #fff;
 }
