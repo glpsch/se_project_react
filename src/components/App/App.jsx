@@ -10,11 +10,11 @@ import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import TemperatureUnitContext from "../../contexts/TemperatureUnitContext";
 import { getWeather } from "../../utils/weatherApi";
+import { getItems, addItem } from "../../utils/api";
 import { coordinates, apiKey } from "../../utils/constants";
-import { defaultClothingItems } from "../../utils/defaultClothingItems";
 
 function App() {
-  const [clothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [weatherData, setWeatherData] = useState(null);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -34,6 +34,14 @@ function App() {
         console.error(err);
         setWeatherError("Couldn't load the weather. Please try again later.");
       });
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch(console.error);
   }, []);
 
   const handleToggleSwitchChange = () => {
@@ -59,8 +67,14 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemSubmit = (evt) => {
-    evt.preventDefault();
+  const handleAddItemSubmit = ({ name, imageUrl, weather }, resetForm) => {
+    addItem({ name, imageUrl, weather })
+      .then((item) => {
+        setClothingItems([item, ...clothingItems]);
+        resetForm();
+        handleCloseModal();
+      })
+      .catch(console.error);
   };
 
   return (
@@ -102,7 +116,7 @@ function App() {
           <AddItemModal
             isOpen={activeModal === "add-garment"}
             onClose={handleCloseModal}
-            onSubmit={handleAddItemSubmit}
+            onAddItem={handleAddItemSubmit}
           />
         </TemperatureUnitContext.Provider>
       </div>

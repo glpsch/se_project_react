@@ -3,7 +3,7 @@ import "./ItemModal.css";
 
 function ItemModal({ card, isOpen, onClose }) {
   const cardName = card?.name || "";
-  const cardImage = card?.link || "";
+  const cardImage = card?.imageUrl || card?.link || "";
   const cardWeather = card?.weather || "";
 
   useEffect(() => {
