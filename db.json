@@ -73,12 +73,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Shorts.png?etag=d728c496643f610de8d8fea92dd915ba"
     },
     {
-      "_id": 12,
-      "name": "Skirt",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Skirt.png?etag=27a6bea7e1b63218820d615876fa31d1"
-    },
-    {
       "_id": 13,
       "name": "Sneakers",
       "weather": "warm",
@@ -97,16 +91,10 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sweatshirt.png?etag=008a9674757bea2e0bdb31242e364be0"
     },
     {
-      "_id": 16,
       "name": "T-Shirt",
+      "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmir-s3-cdn-cf.behance.net%2Fproject_modules%2F1400%2Fbea742183796743.654630146f933.jpg&f=1&nofb=1&ipt=acd8cd623aac3ed99b14acd44b08f82eabbe6264c8e768d0b43604ec9255bee2",
       "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
-    },
-    {
-      "name": "aassas",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8B0LzXWu6C1apNiMvHP-BWCAQFJaEXqmAqOT3w6VNroQZZiYwC0VERwmf&s=10",
-      "weather": "hot",
-      "_id": 17
+      "_id": 18
     }
   ]
 }

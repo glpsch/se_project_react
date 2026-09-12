@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./ItemModal.css";
 
-function ItemModal({ card, isOpen, onClose }) {
+function ItemModal({ card, isOpen, onClose, onDeleteClick }) {
   const cardName = card?.name || "";
   const cardImage = card?.imageUrl || card?.link || "";
   const cardWeather = card?.weather || "";
@@ -39,8 +39,19 @@ function ItemModal({ card, isOpen, onClose }) {
         <button type="button" className="modal__close" onClick={onClose} />
         <img src={cardImage} alt={cardName} className="modal__image" />
         <div className="modal__footer">
-          <h2 className="modal__caption">{cardName}</h2>
-          <p className="modal__weather">Weather: {cardWeather}</p>
+          <div>
+            <h2 className="modal__caption">{cardName}</h2>
+            <p className="modal__weather">Weather: {cardWeather}</p>
+          </div>
+          <div>
+            <button
+              type="button"
+              className="modal__delete"
+              onClick={() => onDeleteClick(card)}
+            >
+              Delete item
+            </button>
+          </div>
         </div>
       </div>
     </div>

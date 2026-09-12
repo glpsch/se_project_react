@@ -41,7 +41,7 @@
   height: 20px;
   border: none;
   padding: 0;
-  cursor: pointer;
+  cursor: pointer;  
   background: transparent;
 }
 
@@ -53,7 +53,7 @@
   left: 0;
   width: 20px;
   height: 2px;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3); 
 }
 
 .modal__close::before {
@@ -170,6 +170,9 @@
 
 .modal__footer {
   padding: 20px 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  
 }
 
 .modal__caption {
@@ -184,4 +187,15 @@
   font-family: "Cabinet Grotesk Bold";
   font-size: 20px;
   line-height: 1.2;
+}
+
+.modal__delete {
+color: #FF4D00;
+font-family: "Cabinet Grotesk Bold";
+font-size: 20px;
+line-height: 1.2;
+cursor: pointer;
+outline: none;
+border: none;
+background: transparent;
 }

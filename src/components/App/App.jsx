@@ -8,9 +8,10 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import TemperatureUnitContext from "../../contexts/TemperatureUnitContext";
 import { getWeather } from "../../utils/weatherApi";
-import { getItems, addItem } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 import { coordinates, apiKey } from "../../utils/constants";
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
-        setClothingItems(items);
+        setClothingItems(items.reverse());
       })
       .catch(console.error);
   }, []);
@@ -65,6 +66,23 @@ function App() {
 
   const handleCloseModal = () => {
     setActiveModal("");
+  };
+
+  const openConfirmationModal = (card) => {
+    setSelectedCard(card);
+    setActiveModal("delete");
+  };
+
+  const handleCardDelete = () => {
+    deleteItem(selectedCard._id)
+      .then(() => {
+        setClothingItems((items) =>
+          items.filter((item) => item._id !== selectedCard._id)
+        );
+        setSelectedCard({});
+        handleCloseModal();
+      })
+      .catch(console.error);
   };
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }, resetForm) => {
@@ -112,11 +130,17 @@ function App() {
             card={selectedCard}
             isOpen={activeModal === "preview"}
             onClose={handleCloseModal}
+            onDeleteClick={openConfirmationModal}
           />
           <AddItemModal
             isOpen={activeModal === "add-garment"}
             onClose={handleCloseModal}
             onAddItem={handleAddItemSubmit}
+          />
+          <DeleteConfirmationModal
+            isOpen={activeModal === "delete"}
+            onClose={handleCloseModal}
+            onConfirm={handleCardDelete}
           />
         </TemperatureUnitContext.Provider>
       </div>
